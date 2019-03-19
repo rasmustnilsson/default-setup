@@ -10,3 +10,8 @@ sudo apt upgrade -y -qq
 
 printf "${GREEN}Installing packages...${NO_COLOR}\n"
 sudo apt install code -y -qq
+
+keyBindingsPath=org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/
+
+gsettings set $keyBindingsPath prev-tab '<Control>q'
+gsettings set $keyBindingsPath next-tab '<Control>e'
