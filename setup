@@ -1,2 +1,8 @@
 #!/bin/bash
-echo "hello"
+GREEN='\033[0;32m'
+NO_COLOR='\033[0m'
+
+echo "${GREEN}Running apt update...${NO_COLOR}"
+apt update -qq
+echo "${GREEN}Running apt upgrade...${NO_COLOR}"
+apt upgrade -y -qq
