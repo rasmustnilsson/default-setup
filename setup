@@ -3,10 +3,10 @@ GREEN='\033[0;32m'
 NO_COLOR='\033[0m'
 
 printf "${GREEN}Running apt update...${NO_COLOR}\n"
-apt update -qq
+sudo apt update -qq
 
 printf "${GREEN}Running apt upgrade...${NO_COLOR}\n"
-apt upgrade -y -qq
+sudo apt upgrade -y -qq
 
 printf "${GREEN}Installing packages...${NO_COLOR}\n"
-apt install code -y -qq
+sudo apt install code -y -qq
