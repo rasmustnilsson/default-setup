@@ -2,11 +2,11 @@
 GREEN='\033[0;32m'
 NO_COLOR='\033[0m'
 
-echo "${GREEN}Running apt update...${NO_COLOR}"
+printf "${GREEN}Running apt update...${NO_COLOR}\n"
 apt update -qq
 
-echo "${GREEN}Running apt upgrade...${NO_COLOR}"
+printf "${GREEN}Running apt upgrade...${NO_COLOR}\n"
 apt upgrade -y -qq
 
-echo "${GREEN}Installing packages...${NO_COLOR}"
+printf "${GREEN}Installing packages...${NO_COLOR}\n"
 apt install code -y -qq
