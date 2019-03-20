@@ -15,3 +15,15 @@ keyBindingsPath=org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy
 
 gsettings set $keyBindingsPath prev-tab '<Control>q'
 gsettings set $keyBindingsPath next-tab '<Control>e'
+
+printf "${GREEN}Hiding top bar...${NO_COLOR}\n"
+EXTENSIONS_PATH="$HOME/.local/share/gnome-shell/extensions/"
+mkdir -p $EXTENSIONS_PATH
+cd $EXTENSIONS_PATH
+git clone https://github.com/mlutfy/hidetopbar.git hidetopbar@mathieu.bidon.ca
+
+cd hidetopbar@mathieu.bidon.ca
+make schemas > /dev/null
+
+gnome-shell-extension-tool -e hidetopbar@mathieu.bidon.ca > /dev/null
+gnome-shell --replace & > /dev/null
