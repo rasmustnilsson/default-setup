@@ -12,9 +12,14 @@ printf "${GREEN}Installing packages...${NO_COLOR}\n"
 sudo apt install code -y -qq
 
 keyBindingsPath=org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/
+UNITY_LAUNCHER_SCHEMA=org.gnome.shell.extensions
 
 gsettings set $keyBindingsPath prev-tab '<Control>q'
 gsettings set $keyBindingsPath next-tab '<Control>e'
+
+printf "${GREEN}Moving dock to right position${NO_COLOR}\n"
+gsettings set $UNITY_LAUNCHER_SCHEMA.dash-to-dock dock-position LEFT
+gsettings set $UNITY_LAUNCHER_SCHEMA.dash-to-dock dock-fixed false
 
 printf "${GREEN}Hiding top bar...${NO_COLOR}\n"
 EXTENSIONS_PATH="$HOME/.local/share/gnome-shell/extensions/"
