@@ -1,0 +1,3 @@
+alias copy='xclip -selection clipboard'
+alias dl='cd ~/Downloads'
+alias home='cd ~'

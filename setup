@@ -32,3 +32,21 @@ make schemas > /dev/null
 
 gnome-shell-extension-tool -e hidetopbar@mathieu.bidon.ca > /dev/null
 gnome-shell --replace & > /dev/null
+
+# Sets up custom aliases
+BASH_PATH="$HOME/.bashrc"
+
+if [ -f "$BASH_PATH" ]
+then
+    FOLDER_NAME=${PWD##*/}
+    if ! grep -q "source\s.*$FOLDER_NAME\/aliases" "$BASH_PATH"; then
+
+        echo "source ${PWD}/aliases" >> $BASH_PATH
+        exec bash
+    else
+        echo "${GREEN}Aliases are already loaded.${NO_COLOR}"
+    fi
+else
+    echo "${GREEN}Can't find .bashrc file.${NO_COLOR}"
+fi
+
