@@ -9,7 +9,7 @@ printf "${GREEN}Running apt upgrade...${NO_COLOR}\n"
 sudo apt upgrade -y -qq
 
 printf "${GREEN}Installing packages...${NO_COLOR}\n"
-sudo apt install code xclip -y -qq
+sudo apt install code xclip curl -y -qq
 
 KEY_BINDINGS_PATH=org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/
 UNITY_LAUNCHER_SCHEMA=org.gnome.shell.extensions
