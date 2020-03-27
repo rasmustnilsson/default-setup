@@ -9,7 +9,7 @@ printf "${GREEN}Running apt upgrade...${NO_COLOR}\n"
 sudo apt upgrade -y -qq
 
 printf "${GREEN}Installing packages...${NO_COLOR}\n"
-sudo apt install code xclip -y -qq
+sudo apt install code xclip curl -y -qq
 
 KEY_BINDINGS_PATH=org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/
 UNITY_LAUNCHER_SCHEMA=org.gnome.shell.extensions
@@ -21,19 +21,8 @@ printf "${GREEN}Moving dock to right position${NO_COLOR}\n"
 gsettings set $UNITY_LAUNCHER_SCHEMA.dash-to-dock dock-position LEFT
 gsettings set $UNITY_LAUNCHER_SCHEMA.dash-to-dock dock-fixed false
 
-printf "${GREEN}Hiding top bar...${NO_COLOR}\n"
-EXTENSIONS_PATH="$HOME/.local/share/gnome-shell/extensions/"
-mkdir -p $EXTENSIONS_PATH
-cd $EXTENSIONS_PATH
-git clone https://github.com/mlutfy/hidetopbar.git hidetopbar@mathieu.bidon.ca
-
-cd hidetopbar@mathieu.bidon.ca
-make schemas > /dev/null
-
-gnome-shell-extension-tool -e hidetopbar@mathieu.bidon.ca > /dev/null
-gnome-shell --replace & > /dev/null
-
 # Sets up custom aliases
+printf "${GREEN}Installing aliases...${NO_COLOR}\n"
 BASH_PATH="$HOME/.bashrc"
 
 if [ -f "$BASH_PATH" ]
@@ -50,3 +39,14 @@ else
     echo "${GREEN}Can't find .bashrc file.${NO_COLOR}"
 fi
 
+printf "${GREEN}Hiding top bar...${NO_COLOR}\n"
+EXTENSIONS_PATH="$HOME/.local/share/gnome-shell/extensions/"
+mkdir -p $EXTENSIONS_PATH
+cd $EXTENSIONS_PATH
+git clone https://github.com/mlutfy/hidetopbar.git hidetopbar@mathieu.bidon.ca
+
+cd hidetopbar@mathieu.bidon.ca
+make schemas > /dev/null
+
+gnome-shell-extension-tool -e hidetopbar@mathieu.bidon.ca > /dev/null
+gnome-shell --replace & > /dev/null
